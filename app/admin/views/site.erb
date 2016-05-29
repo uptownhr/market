@@ -1,0 +1,60 @@
+<% form_for :site, "/admin/site/save/#{params[:id]}", :id => 'admin-form', :multipart => true do |f| %>
+
+<div class="dashhead">
+  <div class="dashhead-titles">
+    <h6 class="dashhead-subtitle">Dashboards</h6>
+    <h2 class="dashhead-title">Sites</h2>
+  </div>
+  <div class="btn-toolbar dashhead-toolbar">
+
+    <button class="btn btn-primary-outline">Save Site</button>
+  </div>
+</div>
+<hr class="m-t">
+<section class="content-header">
+  
+  <div class="field row" id="field_domain">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :domain, :caption => "Domain", :required => true %>
+        <%= f.text_field :domain, :class => 'form-control', :required => true %>
+      </div>
+      <!-- /.form-group -->
+    </div>
+  </div>
+  <!-- /.row -->
+  <div class="field row" id="field_app">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :app_id, :caption => "App", :required => true %>
+        <%= f.select :app_id, :collection => App.all, :fields => [:name, :id], :class => 'form-control select2', :required => true %>
+      </div><!-- /.form-group -->
+      <!-- /.form-group -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+  <div class="field row" id="field_user">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :user_id, :caption => "User", :required => true %>
+        <%= f.select :user_id, :collection => User.all, :fields => [:username, :id], :class => 'form-control select2', :required => true %>
+      </div>
+      <!-- /.form-group -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+  <div class="field row" id="field_status">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :status, :caption => "Status", :required => true %>
+        <%= f.select :status, :options => ['stopped','started'], :class => 'form-control select2', :required => true %>
+      </div>
+      <!-- /.form-group -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<% end %>
